@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}My Tickets{% endblock %}
+{% block content %}
+    <h1>My Tickets</h1>
+    {% if tickets %}
+    <ul class="list-group">
+        {% for ticket in tickets %}
+        <li class="list-group-item">
+            <strong>Movie ID:</strong> {{ ticket['movie_id'] }} <br>
+            <strong>Theater:</strong> {{ ticket['theater'] }} <br>
+            <strong>Showtime:</strong> {{ ticket['showtime'] }} <br>
+            <strong>Ticket ID:</strong> {{ ticket['ticket_id'] }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>You have not purchased any tickets yet.</p>
+    {% endif %}
+{% endblock %}

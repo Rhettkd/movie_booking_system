@@ -1,0 +1,79 @@
+{% extends "admin_layout.html" %}
+{% block admin_title %}Reports{% endblock %}
+{% block page_title %}Sales Reports{% endblock %}
+
+{% block admin_content %}
+<!-- Summary Cards -->
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h5 class="card-title">Total Tickets Sold</h5>
+                <h2 class="card-text">{{ total_tickets }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5 class="card-title">Active Movies</h5>
+                <h2 class="card-text">{{ current_movies|length }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sales by Movie -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h3 class="h5 mb-0">Ticket Sales by Movie</h3>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Movie Title</th>
+                        <th>Tickets Sold</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for movie in movie_sales %}
+                    <tr>
+                        <td>{{ movie.title }}</td>
+                        <td>{{ movie.tickets_sold }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Sales by Theater -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h3 class="h5 mb-0">Ticket Sales by Theater</h3>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Theater</th>
+                        <th>Tickets Sold</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for theater in theater_sales %}
+                    <tr>
+                        <td>{{ theater.theater }}</td>
+                        <td>{{ theater.tickets_sold }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
